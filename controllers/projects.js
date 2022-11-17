@@ -1,4 +1,6 @@
 import Project from '../models/project.js'
+import { NotFound } from '../config/errors.js'
+import { sendErrors } from '../config/helpers.js'
 
 // ? INDEX ROUTE
 // Method: GET
@@ -9,25 +11,23 @@ export const getAllProjects = async (req, res) => {
     console.log(projects)
     return res.json(projects)
   } catch (err) {
-    console.log(err)
+    sendErrors(res, err)
   }
 }
 
 // ? SHOW ROUTE
 // Method: GET
 // Endpoint: /projects/:id
-// Description: Return a single project that matches the id passed in the params
 export const getSingleProject = async (req, res) => {
   try {
     const { id } = req.params
     const project = await Project.findById(id)
     if (!project) {
-      throw new Error('Project not found')
+      throw new NotFound('Project not found')
     }
     return res.json(project)
   } catch (err) {
-    console.log(err)
-    return res.status(404).json({ message: 'Project not found' })
+    sendErrors(res, err)
   }
 }
 
@@ -40,9 +40,7 @@ export const addProject = async (req, res) => {
     console.log(projectToAdd)
     return res.status(201).json(projectToAdd)
   } catch (err) {
-    console.log('🆘 Project not created')
-    console.log(err)
-    return res.status(422).json(err.errors)
+    sendErrors(res, err)
   }
 }
 
@@ -55,8 +53,7 @@ export const updateProject = async (req, res) => {
     const project = await Project.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
     return res.status(202).json(project)
   } catch (err) {
-    console.log(err)
-    return res.status(404).json({ message: 'Project not found' })
+    sendErrors(res, err)
   }
 }
 
@@ -72,7 +69,6 @@ export const deleteProject = async (req, res) => {
     }
     return res.sendStatus(204)
   } catch (err) {
-    console.log(err)
-    return res.status(404).json({ message: 'Project not found' })
+    sendErrors(res, err)
   }
 }

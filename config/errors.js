@@ -12,7 +12,7 @@ export class Unauthorised extends Error {
   constructor(message) {
     super(message)
     this.name = 'Unauthorised'
-    this.message = message ? message : 'Inauthorised'
+    this.message = message ? message : 'Unauthorised'
     this.status = 401
   }
 }

@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose' // mongoose allows our server to talk to our database
-import { port, dbURI } from './config/environment.js'
 import router from './config/router.js'
+import { } from 'dotenv/config'
 
 // ! Variables
 const app = express()
@@ -9,7 +9,7 @@ const app = express()
 const startServer = async () => {
   try {
     // ! Connect to database
-    await mongoose.connect(dbURI)
+    await mongoose.connect(process.env.DB_URI)
     console.log('======= Database up and running =========')
 
     // ! Middleware
@@ -29,7 +29,7 @@ const startServer = async () => {
     app.use((_req, res) => res.status(404).json({ message: 'Route not found' }))
 
     // ! Start node server / Listen for requests
-    app.listen(port, () => console.log(`********🏆 Server running on port ${port} 🏆*******`))
+    app.listen(process.env.PORT, () => console.log(`********🏆 Server running on port ${process.env.PORT} 🏆*******`))
   } catch (err) {
     console.log('=========== Something went wrong when starting the servers =========')
     console.log(err)

@@ -46,7 +46,4 @@ userSchema.methods.validatePassword = function (plainTextPassword) {
 
 
 
-
-
-
 export default mongoose.model('User', userSchema)

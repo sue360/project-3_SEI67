@@ -1,14 +1,13 @@
 import mongoose from 'mongoose'
-import { dbURI } from '../config/environment.js' // Import our DBURI so we can connect to the database
-import Project from '../models/project.js' // Import the model so we can interact with the database
+import Project from '../models/project.js'
 import projectData from './data/projects.js'
 import User from '../models/user.js'
 import userData from './data/users.js'
-
+import { } from 'dotenv/config'
 
 const seedDatabase = async () => {
   try {
-    await mongoose.connect(dbURI)
+    await mongoose.connect(process.env.DB_URI)
     console.log('*********** Database connected! *************')
 
     await mongoose.connection.db.dropDatabase()
@@ -17,9 +16,16 @@ const seedDatabase = async () => {
     // Adding users into the database
     const users = await User.create(userData)
     console.log(`👹👹👹 Users collection seeded with ${users.length} users! 👹👹👹`)
+    console.log(users)
 
-    // Once data has been dropped, we want to seed our new data into the database
-    const projects = await Project.create(projectData)
+
+
+    const projectsWithOwners = projectData.map(project => {
+      return { ...project, owner: users[0]._id }
+    })
+
+
+    const projects = await Project.create(projectsWithOwners)
     console.log(`🌱🌱🌱🌱🌱🌱 Projects collection seeded with ${projects.length} projects!🌱🌱🌱🌱🌱`)
 
 

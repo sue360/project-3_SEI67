@@ -7,7 +7,7 @@ import { sendErrors } from '../config/helpers.js'
 // Endpoint: /projects
 export const getAllProjects = async (req, res) => {
   try {
-    const projects = await Project.find()
+    const projects = await Project.find().populate('owner')
     console.log(projects)
     return res.json(projects)
   } catch (err) {
@@ -35,6 +35,7 @@ export const getSingleProject = async (req, res) => {
 // Method: POST
 // Endpoint: /projects
 export const addProject = async (req, res) => {
+  console.log('REQ CURRENT USER--->', req.currentUser)
   try {
     const projectToAdd = await Project.create(req.body)
     console.log(projectToAdd)

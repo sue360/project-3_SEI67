@@ -23,7 +23,7 @@ const projectSchema = new mongoose.Schema({
   projectName: { type: String, required: true, unique: true },
   image: { type: String, required: true }, // temp, cloudinary 
   year: { type: Number, required: true },
-  // owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   // reviews: [reviewSchema]
 }, {
   timestamps: true

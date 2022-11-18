@@ -10,6 +10,16 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true }
 })
 
+
+// REMOVING PSW
+
+userSchema.set('toJSON', {
+  transform(_doc, json) {
+    delete json.password
+    return json
+  }
+})
+
 userSchema
   .virtual('passwordConfirmation')
   .set(function (fieldValue) {

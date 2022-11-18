@@ -1,6 +1,6 @@
 import Project from '../models/project.js'
-import { NotFound } from '../config/errors.js'
-import { sendErrors } from '../config/helpers.js'
+import { NotFound, Unauthorised } from '../config/errors.js'
+import { sendErrors, findProject } from '../config/helpers.js'
 
 // ? INDEX ROUTE
 // Method: GET
@@ -51,10 +51,15 @@ export const addProject = async (req, res) => {
 // Endpoint: /projects/:id
 export const updateProject = async (req, res) => {
   try {
-    const { id } = req.params
-    const project = await Project.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
-    return res.status(202).json(project)
+    const project = await findProject(req, res)
+    if (project && req.currentUser._id.equals(project.owner)) {
+      Object.assign(project, req.body)
+      project.save()
+      return res.status(202).json(project)
+    }
+    throw new Unauthorised()
   } catch (err) {
+    console.log(err)
     sendErrors(res, err)
   }
 }
@@ -64,12 +69,12 @@ export const updateProject = async (req, res) => {
 // Endpoint: /projects/:id
 export const deleteProject = async (req, res) => {
   try {
-    const { id } = req.params
-    const projectToDelete = await Project.findByIdAndDelete(id)
-    if (!projectToDelete) {
-      throw new Error('Project not found')
+    const project = await findProject(req, res)
+    if (project && project.owner.equals(req.currentUser._id)) {
+      await project.remove()
+      return res.sendStatus(204)
     }
-    return res.sendStatus(204)
+    throw new Unauthorised()
   } catch (err) {
     sendErrors(res, err)
   }

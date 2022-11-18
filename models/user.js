@@ -2,12 +2,27 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
-// ?  Fields
+
+// ? ******* REVIEW SCHEMA **************** (Embedded relationship)
+
+const reviewSchema = new mongoose.Schema({
+  text: { type: String, required: true, maxlength: 500 },
+  rating: { type: Number, required: true, min: 1, max: 5 },
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+}, {
+  timestamps: true //option
+})
+
+
+
+// ? ******* USER SCHEMA **************** (Referenced relationship)
+
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true, maxlength: 30 },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+
 })
 
 
@@ -19,6 +34,8 @@ userSchema.set('toJSON', {
     return json
   }
 })
+
+// psw confirmation - virtual 
 
 userSchema
   .virtual('passwordConfirmation')

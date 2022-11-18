@@ -1,6 +1,6 @@
 import { CastError } from 'mongoose'
 import { NotFound, Unauthorised } from '../config/errors.js'
-// import Project from '../models/project.js'
+import Project from '../models/project.js'
 
 
 export const sendErrors = (res, err) => {
@@ -21,3 +21,13 @@ export const sendErrors = (res, err) => {
 }
 
 
+export const findProject = async (req, res) => {
+  try {
+    const { id } = req.params
+    const project = await Project.findById(id)
+    if (!project) throw new NotFound('Project not found')
+    return project
+  } catch (err) {
+    sendErrors(res, err)
+  }
+}

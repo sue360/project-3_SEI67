@@ -37,8 +37,9 @@ export const getSingleProject = async (req, res) => {
 export const addProject = async (req, res) => {
   console.log('REQ CURRENT USER--->', req.currentUser)
   try {
-    const projectToAdd = await Project.create(req.body)
-    console.log(projectToAdd)
+    const projectWithOwner = { ...req.body, owner: req.currentUser._id }
+    const projectToAdd = await Project.create(projectWithOwner)
+    console.log('PROJECT TO ADD--->', projectToAdd)
     return res.status(201).json(projectToAdd)
   } catch (err) {
     sendErrors(res, err)

@@ -20,7 +20,9 @@ export default async (req, res, next) => {
       console.log('***** TOKEN VALID BUT USER DOES NOT EXIST ******')
       throw new Unauthorised('User not found')
     }
+
     req.currentUser = userToVerify
+
     next()
 
   } catch (err) {

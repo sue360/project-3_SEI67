@@ -3,16 +3,6 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
 
-// ? ******* REVIEW SCHEMA **************** (Embedded relationship)
-
-const reviewSchema = new mongoose.Schema({
-  text: { type: String, required: true, maxlength: 500 },
-  rating: { type: Number, required: true, min: 1, max: 5 },
-  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
-}, {
-  timestamps: true //option
-})
-
 
 
 // ? ******* USER SCHEMA **************** (Referenced relationship)

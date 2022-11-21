@@ -1,5 +1,8 @@
 
 import { sendErrors, findProject } from '../config/helpers.js'
+import User from '../models/user.js'
+import { NotFound } from '../config/errors.js'
+
 
 // ? ************** ADD REVIEW **************************
 
@@ -8,19 +11,13 @@ import { sendErrors, findProject } from '../config/helpers.js'
 
 export const addReview = async (req, res) => {
   try {
-    const project = await findProject(req, res)
-    if (project) {
-      const reviewWithOwner = { ...req.body, owner: req.currentUser._id }
-      console.log(reviewWithOwner)
-      project.reviews.push(reviewWithOwner)
-      await project.save()
-      return res.json(project)
-    }
+    const loggedInUser = await User.findById(req.currentUser._id).populate('createdProjects')
+    if(!loggedInUser) throw new NotFound('User not found')
+    return res.json(loggedInUser)
   } catch (err) {
     sendErrors(res, err)
   }
 }
-
 
 // ? ************ DELETE REVIEW *******************
 // Method: DELETE

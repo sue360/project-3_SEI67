@@ -21,11 +21,15 @@ export const sendErrors = (res, err) => {
 }
 
 
-export const findProject = async (req, res) => {
+export const findProject = async (req, res, populations) => {
   try {
     const { id } = req.params
-    const project = await Project.findById(id)
+    let project = await Project.findById(id)
     if (!project) throw new NotFound('Project not found')
+    if (populations && populations.length){
+      const populationPromises = populations.map(population => project.populate(population))
+      await Promise.all(populationPromises)
+    }
     return project
   } catch (err) {
     sendErrors(res, err)

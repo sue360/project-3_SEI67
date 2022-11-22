@@ -43,8 +43,10 @@ main {
       max-width: 100%;
     }
 
-    .form-text {
-      color: red;
+    small {
+      display: block;
+      margin-bottom: 15px;
+      color: rgb(163, 2, 2);
     }
   }
 }

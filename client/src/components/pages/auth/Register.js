@@ -21,12 +21,7 @@ const Register = () => {
     passwordConfirmation: '',
   })
 
-  const [error, setError] = useState({
-    username: '',
-    email: '',
-    password: '',
-    passwordConfirmation: '',
-  })
+  const [error, setError] = useState('')
 
   // formFields updates (state) when input changes
   const handleChange = (e) => {
@@ -42,14 +37,12 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(formFields)
-
     try {
-      // POST request
       await axios.post('/api/register', formFields)
       console.log('Register successful')
       // navigate('/login')
     } catch (err) {
-      console.log(err.response.data)
+      console.log(err.response.data.message)
       setError(err.response.data.message)
     }
   }
@@ -66,35 +59,36 @@ const Register = () => {
               {/* username */}
               <label htmlFor="username">Username <span>*</span></label>
               <input type="text" name="username" onChange={handleChange} value={formFields.username} placeholder="Username" />
-              {error.username && (
+              {/* {error.username && (
                 <Form.Text>{error.username}</Form.Text>
-              )}
+              )} */}
               {/* email */}
               <label htmlFor="email">Email <span>*</span></label>
               <input type="email" name="email" onChange={handleChange} value={formFields.email} placeholder="Email" />
-              {error.email && (
+              {/* {error.email && (
                 <Form.Text>{error.email}</Form.Text>
-              )}
+              )} */}
               {/* psw */}
               <label htmlFor="password">Password <span>*</span></label>
               <input type="password" name="password" onChange={handleChange} value={formFields.password} placeholder="Password" />
-              {error.password && (
+              {/* {error.password && (
                 <Form.Text>{error.password}</Form.Text>
-              )}
+              )} */}
               {/* psw confirmation */}
               <label htmlFor="passwordConfirmation">Confirm Password <span>*</span></label>
               <input type="password" name="passwordConfirmation" onChange={handleChange} value={formFields.passwordConfirmation} placeholder="Password Confirmation" />
-              {error.passwordConfirmation && (
+              {/* {error.passwordConfirmation && (
                 <Form.Text>{error.passwordConfirmation}</Form.Text>
-              )}
-
+              )} */}
+              {/* error */}
+              {error && <small className='text-danger'>{error}</small>}
               {/* submit */}
               <button className="btn btn-main w-100">Register</button>
             </form>
           </div>
         </Row>
       </Container>
-    </main>
+    </main >
   )
 }
 export default Register

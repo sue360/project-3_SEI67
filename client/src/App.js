@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { FaStar } from 'react-icons/fa'
-import './styles/main.scss'
 
 const colors = {
   orange: '#FFBA5A',
@@ -38,29 +37,33 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <h1>Rating</h1>
-      <div className="stars">
-        {stars.map((_, index) => {
-          return (
-            <FaStar
-              key={index}
-              size={24}
-              onClick={() => handleClick(index + 1)}  
-              onMouseOver={() => handleMouseOver(index + 1)}
-              onMouseLeave={handleMouseLeave}
-              color={(hoverValue || currentValue) > index ? colors.orange : colors.grey}
-            />
-          )
-        })}
+    <div>
+      <div className="container">
+        <h1>Rating</h1>
+        <div className="stars">
+          {stars.map((_, index) => {
+            return (
+              <FaStar
+                key={index}
+                size={24}
+                onClick={() => handleClick(index + 1)}  
+                onMouseOver={() => handleMouseOver(index + 1)}
+                onMouseLeave={handleMouseLeave}
+                color={(hoverValue || currentValue) > index ? colors.orange : colors.grey}
+              />
+            )
+          })}
+        </div>
+        <textarea
+          placeholder="Give a rating by clicking the stars and leave some feedback"
+          className="textarea"
+        />
+        <div>
+          <button>
+          Submit feedback
+          </button>
+        </div>
       </div>
-      <textarea
-        placeholder="Give a rating by clicking the stars and leave some feedback"
-        className="textarea"
-      />
-      <button>
-        Submit feedback
-      </button>
     </div>
   )
 }

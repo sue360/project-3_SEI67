@@ -3,31 +3,33 @@
 }
 
 .container {
-    display: "flex";
-    flex-direction: "column";
-    align-items: "center";
-  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-  .stars {
+.stars {
     display: flex;
     flex-direction: row;
     margin-right: 12px;
-    cursor: "pointer";
+    cursor: pointer;
   }
 
-  .textarea {
-    border: "1px solid #a9a9a9";
+.textarea {
+    border: 1px solid #a9a9a9;
     border-radius: 5px;
     padding: 10px;
-    margin: 20px 0;
+    margin: 40px 0 10px 0;
     min-height: 100px;
     width: 300px;
+    height: 150px;
   }
 
-  button {
-    border: "1px solid #a9a9a9";
+button {
+    border: 1px solid #a9a9a9;
     border-radius: 5px;
     width: 300px;
     padding: 10px;
+    cursor: pointer;
   }
-}

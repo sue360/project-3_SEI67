@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 // bootstrap
 
@@ -12,6 +13,8 @@ import Form from 'react-bootstrap/Form'
 
 
 const Register = () => {
+
+  const navigate = useNavigate()
 
 
   const [formFields, setFormFields] = useState({
@@ -40,7 +43,7 @@ const Register = () => {
     try {
       await axios.post('/api/register', formFields)
       console.log('Register successful')
-      // navigate('/login')
+      navigate('/login')
     } catch (err) {
       console.log(err.response.data.message)
       setError(err.response.data.message)

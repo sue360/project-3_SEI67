@@ -38,9 +38,13 @@ main {
       padding: 5px;
     }
 
-    small {
-      display: block;
-      margin-bottom: 15px;
+    button {
+      width: 200px;
+      max-width: 100%;
+    }
+
+    .form-text {
+      color: red;
     }
   }
 }

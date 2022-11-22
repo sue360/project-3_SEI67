@@ -13,14 +13,13 @@ const App = () => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get('/api/projects') // * <-- replace with your endpoint
-      console.log(data)
     }
     getData()
   })
 
   return (
     <div className='site-wrapper'>
-      <h1>Hello World</h1>
+      <h1>website name</h1>
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<Register />} />

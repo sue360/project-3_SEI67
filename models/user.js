@@ -15,6 +15,14 @@ const userSchema = new mongoose.Schema({
 
 })
 
+// createdProjects field
+
+userSchema.virtual('createdProjects', {
+  ref: 'Project',
+  localField: '_id',
+  foreignField: 'owner'
+})
+
 
 // REMOVING PSW
 

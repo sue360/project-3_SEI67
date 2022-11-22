@@ -26,6 +26,19 @@ const projectSchema = new mongoose.Schema({
   timestamps: true
 })
 
+projectSchema.virtual('avgRating')
+  .get(function(){
+    if (!this.reviews.length) return 'No ratings yet'
+    const sum = this.reviews.reduce((prev, next) => {
+      return prev + next.rating
+    }, 0)
+    return (sum / this.reviews.length).toFixed(2)
+  })
+
+projectSchema.set('toJSON', {
+  virtuals: true
+})
+
 
 
 // ************* Model ************

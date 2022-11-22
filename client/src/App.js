@@ -1,5 +1,10 @@
 import { useEffect } from 'react'
 import axios from 'axios'
+import Home from './components/pages/Home'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import HomePageNavbar from './components/common/HomePageNavbar'
+
+
 
 const App = () => {
   useEffect(() => {
@@ -10,7 +15,26 @@ const App = () => {
     getData()
   })
 
-  return <h1>Hello World</h1>
+  return (
+    <div className='site-wrapper'>
+      <BrowserRouter>
+        <HomePageNavbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
+
 }
 
 export default App
+
+
+// import from React
+
+
+
+//Import components 
+//import PageNavbar from './components/pages/common/PageNavbar'
+

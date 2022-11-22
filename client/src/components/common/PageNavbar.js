@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom'
 
-import { getToken } from '../../components/helpers/auth'
+import { getToken, getPayload } from '../../components/helpers/auth'
 import { useEffect } from 'react'
 
 import Navbar from 'react-bootstrap/Navbar'
@@ -14,7 +14,7 @@ const PageNavbar = () => {
 
 
   useEffect(() => {
-    getToken()
+    getPayload()
   }, [])
 
 

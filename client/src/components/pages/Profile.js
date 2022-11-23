@@ -39,28 +39,38 @@ const Profile = () => {
 
   return (
     <main className='single-page'>
-      <h1> FUNZIONA????</h1>
       <Container className='mt-4'>
         <Row>
           {project ?
             <>
-              {/* ****  PROJECT NAME ******* */}
-              <h1 className='mb-4'>{project.projectName}</h1>
-              <Col md="6">
-                {/* ****  PROJECT IMG ******* */}
-                <img src={project.image} alt={project.name} />
-              </Col>
-              <Col md="6">
-                {/* **** YEAR ******* */}
-                <h2><span>🔵</span> Year</h2>
-                <p>{project.year}</p>
+              <div className='profile'>
+                {/* ****  ARTIST NAME ******* */}
+                <h1 className='mb-4'>{project.name}</h1>
+                <Col md="6">
+                  {/* ****  USER IMG ******* */}
+                  <img style={{ width: '160px', height: '160px', borderRadius: '80px' }}
+                    src={project.image} alt={project.name} />
+                </Col>
+                {/* **** LOCATION ******* */}
+                <h2><span>📍</span> Location </h2>
+                <p>{project.location}</p>
                 <hr />
-                {/* **** ARTIST ******* */}
-                <h2><span>🖼</span> Artist </h2>
-                <p>{project.owner}</p>
+                {/* **** BIO ******* */}
+                <h2><span>📘</span> Bio </h2>
+                <p>{project.bio}</p>
                 <hr />
-                <Link to="/projects" className='btn btn-main'>Back to projects</Link>
-              </Col>
+                <Col md="6">
+                  {/* **** YEAR ******* */}
+                  <h2><span>🔵</span> Year</h2>
+                  <p>{project.year}</p>
+                  <hr />
+                  {/* **** Owner ******* */}
+                  <h2><span>🖼</span> Owner </h2>
+                  <p>{project.owner}</p>
+                  <hr />
+                  <Link to="/projects" className='btn btn-main'>Back to projects</Link>
+                </Col>
+              </div>
             </>
             :
             errors ? <h2>Something went wrong!</h2> : <h2>Loading</h2>

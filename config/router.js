@@ -7,7 +7,7 @@ import { addReview } from '../controllers/reviews.js'
 const router = express.Router()
 
 router.route('/projects')
-  .get(secureRoute, getAllProjects)
+  .get(getAllProjects)
   .post(secureRoute, addProject)
 
 router.route('/projects/:id')

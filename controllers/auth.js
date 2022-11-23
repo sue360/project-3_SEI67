@@ -3,7 +3,9 @@ import User from '../models/user.js'
 import { Unauthorised } from '../config/errors.js'
 import { sendErrors } from '../config/helpers.js'
 import jwt from 'jsonwebtoken'
-import { } from 'dotenv/config'
+// import { } from 'dotenv/config'
+import { secret } from '../config/environment.js'
+
 
 
 
@@ -40,7 +42,7 @@ export const loginUser = async (req, res) => {
       username: userToLogin.username
     }
 
-    const secret = process.env.SECRET
+    // const secret = process.env.SECRET
     const token = jwt.sign(payload, secret, { expiresIn: '1 year' }) // test it with 2 mins
     console.log('TOKEN ->', token)
 

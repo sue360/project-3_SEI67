@@ -23,7 +23,7 @@ const App = () => {
       <h1>logo</h1>
       <BrowserRouter>
         <Routes>
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/projects/:projectId" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>

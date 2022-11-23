@@ -1,14 +1,16 @@
 
 import { Buffer } from 'buffer'
 
+const tokenName = 'ai-artist-token'
+
 // save token (to localStorage)
 export const setToken = (token) => {
-  localStorage.setItem('ai-artist-token', token)
+  localStorage.setItem(tokenName, token)
 }
 
 // get back the token from localStorage
 export const getToken = () => {
-  return localStorage.getItem('ai-artist-token')
+  return localStorage.getItem(tokenName)
 }
 
 
@@ -30,4 +32,10 @@ export const isAuthenticated = () => {
   const { exp } = payload
   const now = Date.now() / 1000
   return exp > now
-} 
+}
+
+export const handleLogout = (navigate) => {
+  localStorage.removeItem(tokenName)
+  navigate('/login')
+}
+

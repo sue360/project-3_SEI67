@@ -12,21 +12,20 @@ import Container from 'react-bootstrap/Container'
 
 const PageNavbar = () => {
 
+  // const navigate = useNavigate()
+
 
   useEffect(() => {
-    isAuthenticated()
+    console.log(isAuthenticated())
   }, [])
-
-
 
   return (
     <Navbar expand="sm">
       <Container>
         <>
-          {/* add isAuthenticated */}
+          {/* add isAuthenticate to /projects  */}
           <Nav.Link as={Link} to="/register">Register</Nav.Link>
           <Nav.Link as={Link} to="/login">Login</Nav.Link>
-
 
         </>
 

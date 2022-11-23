@@ -1,7 +1,7 @@
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-import { isAuthenticated } from '../../components/helpers/auth'
+import { isAuthenticated, handleLogout } from '../../components/helpers/auth'
 import { useEffect } from 'react'
 
 import Navbar from 'react-bootstrap/Navbar'
@@ -12,7 +12,7 @@ import Container from 'react-bootstrap/Container'
 
 const PageNavbar = () => {
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -23,9 +23,10 @@ const PageNavbar = () => {
     <Navbar expand="sm">
       <Container>
         <>
-          {/* add isAuthenticate to /projects  */}
+          {/* add isAuthenticate and conditional logic to hide logout/login */}
           <Nav.Link as={Link} to="/register">Register</Nav.Link>
           <Nav.Link as={Link} to="/login">Login</Nav.Link>
+          <span className='nav-link' onClick={() => handleLogout(navigate)}>Logout</span>
 
         </>
 

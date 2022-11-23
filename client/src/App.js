@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Register from './components/pages/auth/Register'
 import Login from './components/pages/auth/Login'
+import Profile from './components/pages/Profile'
 
 
 
@@ -19,9 +20,10 @@ const App = () => {
 
   return (
     <div className='site-wrapper'>
-      <h1>website name</h1>
+      <h1>logo</h1>
       <BrowserRouter>
         <Routes>
+          <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>

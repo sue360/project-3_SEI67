@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 
-const PageNavbar = () => {
+const HomePageNavbar = () => {
 
 
   return (
@@ -15,10 +15,10 @@ const PageNavbar = () => {
       <a href='/'>🤖</a>
       <ul className='navicons'>
         <li>
-          <a href='/Login'>Login |</a>
+          <a href='/login'>Login |</a>
         </li>
         <li>
-          <a href='/Login'>Register</a>
+          <a href='/gallery'>Gallery</a>
         </li>
       </ul>
 
@@ -27,4 +27,4 @@ const PageNavbar = () => {
   )
 }
 
-export default PageNavbar
+export default HomePageNavbar

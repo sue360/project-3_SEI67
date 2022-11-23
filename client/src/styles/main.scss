@@ -19,13 +19,13 @@ main {
 }
 
 h1 {
-background-color: rgba($color: $primary, $alpha: 0.5);
-font-size: 50px;
-text-align: center;
-font-family:'Courier New', Courier, monospace;
-width: 100%;
-color:#212935;
-padding: 100px;
+  background-color: rgba($color: $primary, $alpha: 0.5);
+  font-size: 50px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  width: 100%;
+  color: #212935;
+  padding: 100px;
 }
 
 .lead {
@@ -37,10 +37,11 @@ padding: 100px;
 }
 
 // HERO TEMPLATE PAGE
-.hero-page{
+.hero-page {
   display: flex;
   align-items: center;
   justify-content: center;
+
   .hero {
     background-image: url(../components/images/art_factory_fef62e69-6cdf-4100-a88d-d1d65fa15690.png);
     background-position: center;
@@ -57,7 +58,7 @@ padding: 100px;
   }
 }
 
-.nav{
+.nav {
   background-color: rgb(255, 115, 0);
   display: flex;
   justify-content: space-between;
@@ -70,15 +71,16 @@ padding: 100px;
 
 .nav ul {
   list-style: none;
-  display:flex;
+  display: flex;
   gap: 10px;
   height: 100%;
 }
-.nav li:hover{
+
+.nav li:hover {
   background-color: rgb(117, 54, 2);
 }
 
-a{
+a {
   color: #d6e7e2;
   text-decoration: none;
   font-weight: 800;
@@ -87,4 +89,65 @@ a{
 
 }
 
+//index using bread api to test
 
+.bread-card {
+  border: none;
+  border-radius: 8px;
+}
+
+.card-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-body {
+  background-color: darken($primary, 15%);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.project_container {
+  display: flex;
+  justify-content: space-around;
+  height: 150px;
+  color: white;
+}
+
+.starter_1 {
+  background-color: white;
+  background-image: url(../components/images/art_factory_6f253fde-cfc9-4f21-8d00-269eb7754100.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 30%;
+}
+
+.starter_2 {
+  background-color: white;
+  background-image: url(../components/images/art_factory_fef62e69-6cdf-4100-a88d-d1d65fa15690.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 30%;
+}
+
+.starter_3 {
+  background-color: white;
+  background-image: url(../components/images/art_factory_7af72351-11e2-4003-a49a-9b503b8dc344.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 30%;
+}
+
+.project_text {
+  background-color: rgba(255, 115, 0, 0.8);
+}

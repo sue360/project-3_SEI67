@@ -8,11 +8,11 @@ const router = express.Router()
 
 router.route('/projects')
   .get(getAllProjects)
-  .post(addProject)
+  .post(secureRoute, addProject)
 
 router.route('/projects/:id')
-  .get(secureRoute, getSingleProject)
-  .put(secureRoute, updateProject)
+  .get(getSingleProject)
+  .put(updateProject)
   .delete(secureRoute, deleteProject)
 
 router.route('/register')

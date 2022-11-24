@@ -17,8 +17,10 @@ const reviewSchema = new mongoose.Schema({
 // ? ******* PROJECT SCHEMA ************* (Referenced relationship)
 
 const projectSchema = new mongoose.Schema({
-  projectName: { type: String, required: true, unique: true },
+  name: { type: String, required: true, unique: true },
   image: { type: String, required: true }, // temp, cloudinary 
+  location: { type: String, required: true },
+  bio: { type: String, required: true },
   year: { type: Number, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   reviews: [reviewSchema]
@@ -27,7 +29,7 @@ const projectSchema = new mongoose.Schema({
 })
 
 projectSchema.virtual('avgRating')
-  .get(function(){
+  .get(function () {
     if (!this.reviews.length) return 'No ratings yet'
     const sum = this.reviews.reduce((prev, next) => {
       return prev + next.rating

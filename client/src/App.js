@@ -13,7 +13,6 @@ import Profile from './components/pages/Profile'
 
 import Register from './components/pages/auth/Register'
 import Login from './components/pages/auth/Login'
-import ProjectSingle from './components/pages/ProjectSingle'
 
 
 const App = () => {
@@ -27,7 +26,7 @@ const App = () => {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/projects/feedbackform" element={<FeedbackForm />} />
           <Route path="/projects/imageuploadform" element={<ImageUploadForm />} />
-          <Route path="/projects/:projectId" element={<ProjectSingle />} />
+          <Route path="/projects/:projectId" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>

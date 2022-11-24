@@ -9,22 +9,23 @@ import Container from 'react-bootstrap/Container'
 
 const GalleryNavbar = () => {
 
-
   return (
-    <nav className='nav_auth'>
-      <a href='/'>🤖</a>
-      <ul className='navicons_auth'>
+    <nav className='nav'>
+      <Link to ='/'>🤖</Link>
+      <ul className='navicons'>
         <li>
-          <a href='/upload'>Upload |</a>
+          <Link to ='/login'>Upload |</Link>
         </li>
         <li>
-          <a href='/logout'>Logout</a>
+          <Link to= '/gallery'>Logout |</Link>
         </li>
       </ul>
 
     </nav>
 
   )
+
+
 }
 
 export default GalleryNavbar

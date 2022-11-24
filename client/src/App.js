@@ -4,14 +4,13 @@ import Home from './components/pages/Home'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePageNavbar from './components/navbars/HomePageNavbar'
 import Gallery from './components/pages/Gallery'
+import Profile from './components/pages/Profile'
 import NavbarAuth from './components/navbars/GalleryNavbar'
 
 // components
 
 import Register from './components/pages/auth/Register'
 import Login from './components/pages/auth/Login'
-import Profile from './components/pages/Profile'
-
 
 
 const App = () => {
@@ -22,14 +21,9 @@ const App = () => {
     getData()
   })
 
-  switch (window.location.pathname) {
-    case '/':
-  }
-
   return (
 
     <div className='site-wrapper'>
-      <h1>logo</h1>
       <BrowserRouter>
         <HomePageNavbar />
         <Routes>

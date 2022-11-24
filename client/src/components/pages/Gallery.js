@@ -2,21 +2,47 @@
 import { useState, useEffect, React } from 'react'
 import { Container } from 'react-bootstrap'
 import axios from 'axios'
-//import { useState, useEffect, useCallback } from 'react'
 
 
-//Imports from React
+//Imports from Bootstrap
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Card from 'react-bootstrap/Card'
 
-const Gallery = () => {
 
+// ! State
+
+const Gallery = () => {
+  const [getProjects, setProjects] = useState([])
   return (
+    useEffect(() => {
+      const getProjects = async () => {
+        try {
+          const { data } = await axios.get('http://localhost:4000/api/projects')
+          setProjects(data)
+          console.log(data)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+      getProjects()
+    }, [])
+
+
+
+
+
+
+
+  )
+
+}
+
+
+
+/*
     <>
-      <div>
-        <h1>Test</h1>
-      </div>
+
       <div className='project_container'>
         <div className='starter_1'>
           <p className='project_text'>Project 1</p>
@@ -31,7 +57,7 @@ const Gallery = () => {
     </>
   )
 }
-
+*/
 
 export default Gallery
 

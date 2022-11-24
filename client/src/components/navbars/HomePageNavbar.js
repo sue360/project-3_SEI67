@@ -12,13 +12,16 @@ const HomePageNavbar = () => {
 
   return (
     <nav className='nav'>
-      <a href='/'>🤖</a>
+      <Link to ='/'>🤖</Link>
       <ul className='navicons'>
         <li>
-          <a href='/login'>Login |</a>
+          <Link to ='/login'>Login |</Link>
         </li>
         <li>
-          <a href='/gallery'>Gallery</a>
+          <Link to= '/gallery'>Gallery |</Link>
+        </li>
+        <li>
+          <Link to='/profile'>Profile |</Link>
         </li>
       </ul>
 

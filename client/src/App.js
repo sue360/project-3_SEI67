@@ -8,7 +8,6 @@ import Home from './components/pages/Home'
 import HomePageNavbar from './components/navbars/HomePageNavbar'
 import Gallery from './components/pages/Gallery'
 import Profile from './components/pages/Profile'
-import NavbarAuth from './components/navbars/GalleryNavbar'
 
 // components
 

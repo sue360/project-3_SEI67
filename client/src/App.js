@@ -14,6 +14,7 @@ import NavbarAuth from './components/navbars/GalleryNavbar'
 
 import Register from './components/pages/auth/Register'
 import Login from './components/pages/auth/Login'
+import ProjectSingle from './components/pages/ProjectSingle'
 
 
 const App = () => {
@@ -25,10 +26,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/projects/feedbackform" element={<FeedbackForm />} />
           <Route path="/projects/imageuploadform" element={<ImageUploadForm />} />
-          <Route path="/projects/:projectId" element={<Profile />} />
+          <Route path="/projects/:projectId" element={<ProjectSingle />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>

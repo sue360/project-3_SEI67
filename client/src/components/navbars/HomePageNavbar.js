@@ -21,7 +21,10 @@ const HomePageNavbar = () => {
           <Link to= '/gallery'>Gallery |</Link>
         </li>
         <li>
-          <Link to='/profile'>Profile |</Link>
+          <Link to='/register'>Register |</Link>
+        </li>
+        <li>
+          <Link to='/projects/imageuploadform'>Upload |</Link>
         </li>
       </ul>
 

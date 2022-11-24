@@ -11,8 +11,8 @@ router.route('/projects')
   .post(secureRoute, addProject)
 
 router.route('/projects/:id')
-  .get(secureRoute, getSingleProject)
-  .put(secureRoute, updateProject)
+  .get(getSingleProject)
+  .put(updateProject)
   .delete(secureRoute, deleteProject)
 
 router.route('/register')

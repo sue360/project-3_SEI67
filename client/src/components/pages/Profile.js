@@ -1,33 +1,86 @@
+import { useState, useEffect } from 'react'
+import { useParams, Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+// import { isOwner, getToken } from '../../components/helpers/auth'
 
-import React from 'react'
+// Bootstrap Components
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 
 const Profile = () => {
 
+  const { projectId } = useParams()
+  console.log('useParams ---->', useParams)
+  const navigate = useNavigate()
+
+
+  const [project, setProject] = useState(null)
+  const [errors, setErrors] = useState(false)
+
+
+  useEffect(() => {
+    const getProject = async () => {
+      try {
+        const { data } = await axios.get(`/api/projects/${projectId}`)
+        // authorization ?
+        console.log(data)
+        setProject(data)
+      } catch (err) {
+        console.log(err)
+        setErrors(true)
+      }
+    }
+    getProject()
+  }, [projectId])
+
+
 
   return (
-    <div>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-around',
-        margin: '18px 0px',
-      }}>
-        <div>
-          <img style={{ width: '160px', height: '160px', borderRadius: '80px' }}
-            src="https://images.unsplash.com/photo-1528271537-64e11fc31bba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGVvcGxlfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-          />
-        </div>
-        <div>
-          <h2> whatever blah </h2>
-          <div style={{ diplay: 'flex', justifyContent: 'space-between', width: '100%' }} >
-            <h5> bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </h5>
-            <h5> bla bla bla 2</h5>
-            <h5> bla bla bla 3</h5>
-          </div>
-        </div>
+    <main className='single-page'>
+      <Container className='mt-4'>
+        <Row>
+          {project ?
+            <>
 
-
-      </div>
-    </div>
+              <div className='profile'>
+                <Col md="6">
+                  {/* **** Artist ******* */}
+                  <h2><span>🖼</span> Artist </h2>
+                  <h1>{project.owner.username}</h1>
+                  {/* ****  USER IMG ******* */}
+                  <img style={{ width: '160px', height: '160px', borderRadius: '80px' }}
+                    src={project.image} alt={project.name} />
+                </Col>
+                <hr />
+                {/* **** BIO ******* */}
+                <h2><span>📘</span> Bio </h2>
+                <p>{project.bio}</p>
+                <hr />
+                {/* **** LOCATION ******* */}
+                <h2><span>📍</span> Location </h2>
+                <p>{project.location}</p>
+                <hr />
+                <Col md="6">
+                  {/* **** YEAR ******* */}
+                  <h2><span>🔵</span> Year</h2>
+                  <p>{project.year}</p>
+                  <hr />
+                  {/* AVG Rating  */}
+                  <h2><span>🏁</span> Average Rating </h2>
+                  <p>{project.avgRating}</p>
+                  <hr />
+                  <Link to="/projects" className='btn btn-main'>Back to projects</Link>
+                </Col>
+              </div>
+            </>
+            :
+            errors ? <h2>Something went wrong!</h2> : <h2>Loading</h2>
+          }
+        </Row>
+      </Container>
+    </main>
   )
 }
 

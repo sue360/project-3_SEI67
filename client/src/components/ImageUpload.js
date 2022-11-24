@@ -1,11 +1,7 @@
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import ImageUploadForm from './ImageUploadForm'
-
 
 
 const ImageUpload = ({ formdata, setFormdata }) => {
-  const navigate = useNavigate()
 
   const handleChange = async (event) => {
     try {
@@ -20,16 +16,7 @@ const ImageUpload = ({ formdata, setFormdata }) => {
     }
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const { data } = await axios.post('/api/projects', formdata)
-      console.log('SUCCESS ->', data._id)
-      navigate('/projects')
-    } catch (err) {
-      console.log(err.response.data)
-    }
-  }
+
       
 
   return (
@@ -43,7 +30,6 @@ const ImageUpload = ({ formdata, setFormdata }) => {
             className="input"
             type="file"
             onChange={handleChange}
-            onSubmit={handleSubmit}
           />
         }
       </div>

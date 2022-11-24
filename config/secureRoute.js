@@ -14,6 +14,7 @@ export default async (req, res, next) => {
       throw new Unauthorised('Missing headers')
     }
     const token = auth.replace('Bearer ', '')
+    console.log(token)
     const payload = jwt.verify(token, secret)
     const userToVerify = await User.findById(payload.sub)
 

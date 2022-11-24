@@ -10,7 +10,7 @@ const ImageUpload = ({ formdata, setFormdata }) => {
       formData.append('file', event.target.files[0])
       formData.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
       const { data } = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, formData)
-      setFormdata({ ...formdata, projectImage: data.secure_url })
+      setFormdata({ ...formdata, image: data.secure_url })
     } catch (err) {
       console.log(err)
     }
@@ -23,8 +23,8 @@ const ImageUpload = ({ formdata, setFormdata }) => {
     <div className="choose-file-button">
       <div className="field">
         <label>AI Project Image: </label>
-        { formdata.profileImage ?
-          <img src={formdata.projectImage} alt="Art image" />
+        { formdata.image ?
+          <img src={formdata.image} alt="Art image" />
           :
           <input
             className="input"

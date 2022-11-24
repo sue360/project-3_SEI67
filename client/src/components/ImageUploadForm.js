@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import ImageUpload from './ImageUpload'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { getToken } from './helpers/auth'
 
 
 
@@ -10,9 +11,9 @@ const ImageUploadForm = () => {
   const navigate = useNavigate()
 
   const [ formdata, setFormdata ] = useState({
-    projectName: '',
+    name: '',
     year: '',
-    projectImage: '',
+    image: '',
   })
 
   const handleChange = event => {
@@ -22,7 +23,11 @@ const ImageUploadForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { data } = await axios.post('/api/projects', formdata)
+      const { data } = await axios.post('/api/projects', formdata, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`, 
+        },
+      })
       console.log('SUCCESS ->', data._id)
       navigate('/projects')
     } catch (err) {
@@ -40,13 +45,13 @@ const ImageUploadForm = () => {
           <div className="mobile">
             <form onSubmit={handleSubmit}> 
               <div className="field">
-                <label htmlFor="title" className="label">Project Name</label>
+                <label htmlFor="name" className="label">Project Name</label>
                 <div className="control">
                   <input
                     type="text"
                     className="input"
-                    name="title"
-                    value={formdata.title}
+                    name="name"
+                    value={formdata.name}
                     onChange={handleChange}
                   />
                 </div>

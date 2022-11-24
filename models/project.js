@@ -19,8 +19,6 @@ const reviewSchema = new mongoose.Schema({
 const projectSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   image: { type: String, required: true }, // temp, cloudinary 
-  location: { type: String, required: true },
-  bio: { type: String, required: true },
   year: { type: Number, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   reviews: [reviewSchema]

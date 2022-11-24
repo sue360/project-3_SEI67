@@ -21,7 +21,7 @@ export const getAllProjects = async (req, res) => {
 export const getSingleProject = async (req, res) => {
   try {
     const { id } = req.params
-    const project = await Project.findById(id)
+    const project = await Project.findById(id).populate('owner')
     if (!project) {
       throw new NotFound('Project not found')
     }

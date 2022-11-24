@@ -2,11 +2,13 @@
   box-sizing: border-box;
 }
 
+// feedbackform page
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 150px;
   }
 
 .stars {
@@ -26,10 +28,45 @@
     height: 150px;
   }
 
-button {
+.submit-feedback-button {
     border: 1px solid #a9a9a9;
     border-radius: 5px;
     width: 300px;
     padding: 10px;
     cursor: pointer;
+    background-color: rgb(7, 7, 102);
+    color: white;
+
   }
+
+
+
+// Image upload form
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-form {
+margin-top: 150px;
+}
+
+.field {
+  margin-top: 40px;
+}
+
+.input {
+  height: 40px;
+  width: 300px;
+}
+
+.img-submit-button {
+  background-color: rgb(7, 7, 102);
+  color: white;
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  width: 300px;
+  padding: 10px;
+}

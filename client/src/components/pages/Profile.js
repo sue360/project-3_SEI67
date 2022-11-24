@@ -43,30 +43,33 @@ const Profile = () => {
         <Row>
           {project ?
             <>
+
               <div className='profile'>
-                {/* ****  ARTIST NAME ******* */}
-                <h1 className='mb-4'>{project.name}</h1>
                 <Col md="6">
+                  {/* **** Artist ******* */}
+                  <h2><span>🖼</span> Artist </h2>
+                  <h1>{project.owner.username}</h1>
                   {/* ****  USER IMG ******* */}
                   <img style={{ width: '160px', height: '160px', borderRadius: '80px' }}
                     src={project.image} alt={project.name} />
                 </Col>
-                {/* **** LOCATION ******* */}
-                <h2><span>📍</span> Location </h2>
-                <p>{project.location}</p>
                 <hr />
                 {/* **** BIO ******* */}
                 <h2><span>📘</span> Bio </h2>
                 <p>{project.bio}</p>
+                <hr />
+                {/* **** LOCATION ******* */}
+                <h2><span>📍</span> Location </h2>
+                <p>{project.location}</p>
                 <hr />
                 <Col md="6">
                   {/* **** YEAR ******* */}
                   <h2><span>🔵</span> Year</h2>
                   <p>{project.year}</p>
                   <hr />
-                  {/* **** Owner ******* */}
-                  <h2><span>🖼</span> Owner </h2>
-                  <p>{project.owner}</p>
+                  {/* AVG Rating  */}
+                  <h2><span>🏁</span> Average Rating </h2>
+                  <p>{project.avgRating}</p>
                   <hr />
                   <Link to="/projects" className='btn btn-main'>Back to projects</Link>
                 </Col>

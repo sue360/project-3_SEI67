@@ -46,21 +46,17 @@ const Profile = () => {
 
               <div className='profile'>
                 <Col md="6">
-                  {/* **** Artist ******* */}
-                  <h2><span>🖼</span> Artist </h2>
-                  <h1>{project.owner.username}</h1>
                   {/* ****  USER IMG ******* */}
-                  <img style={{ width: '160px', height: '160px', borderRadius: '80px' }}
-                    src={project.image} alt={project.name} />
+                  <img src={project.image} alt={project.name} />
                 </Col>
                 <hr />
-                {/* **** BIO ******* */}
-                <h2><span>📘</span> Bio </h2>
-                <p>{project.bio}</p>
+                {/* **** Artist ******* */}
+                <h2><span>🖼</span> Artist </h2>
+                <h1>{project.owner.username}</h1>
                 <hr />
-                {/* **** LOCATION ******* */}
-                <h2><span>📍</span> Location </h2>
-                <p>{project.location}</p>
+                {/* **** PROMPT ******* */}
+                <h2><span>📘</span> Midjourney prompt: </h2>
+                <h2>{project.name}</h2>
                 <hr />
                 <Col md="6">
                   {/* **** YEAR ******* */}

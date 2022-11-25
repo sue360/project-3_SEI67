@@ -33,7 +33,7 @@ const Login = () => {
       const { data } = await axios.post('/api/login', formFields)
       console.log(data.token)
       setToken(data.token)
-      // navigate('/') //add page
+      navigate('/gallery') //add page
     } catch (err) {
       setError(err.response.data.message)
     }

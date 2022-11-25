@@ -8,12 +8,27 @@ import { NotFound } from '../config/errors.js'
 
 // Method: POST
 // Endpoint: /projects/:id/reviews
-
+/*
 export const addReview = async (req, res) => {
   try {
     const loggedInUser = await User.findById(req.currentUser._id).populate('createdProjects')
     if(!loggedInUser) throw new NotFound('User not found')
     return res.json(loggedInUser)
+  } catch (err) {
+    sendErrors(res, err)
+  }
+}
+*/
+
+export const addReview = async (req, res) => {
+  try {
+    const project = await findProject(req, res)
+    if (project) {
+      const reviewWithOwner = { ...req.body, owner: req.currentUser._id }
+      project.reviews.push(reviewWithOwner)
+      await project.save()
+      return res.json(project)
+    }
   } catch (err) {
     sendErrors(res, err)
   }

@@ -18,7 +18,7 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/projects/feedbackform" element={<FeedbackForm />} />
+          <Route path="/projects/:projectId/reviews" element={<FeedbackForm />} />
           <Route path="/projects/imageuploadform" element={<ImageUploadForm />} />
           <Route path="/projects/:projectId" element={<Profile />} />
           <Route path="/register" element={<Register />} />

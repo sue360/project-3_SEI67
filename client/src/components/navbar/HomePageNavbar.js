@@ -18,10 +18,10 @@ const HomePageNavbar = () => {
           <Link to ='/login'>Login |</Link>
         </li>
         <li>
-          <Link to= '/gallery'>Gallery |</Link>
+          <Link to='/register'>Register |</Link>
         </li>
         <li>
-          <Link to='/register'>Register |</Link>
+          <Link to= '/gallery'>Gallery |</Link>
         </li>
         <li>
           <Link to='/projects/imageuploadform'>Upload |</Link>

@@ -1,19 +1,14 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { FaPlaneDeparture, FaStar } from 'react-icons/fa'
-import { useParams } from 'react-router'
+import { FaStar } from 'react-icons/fa'
+import { useParams, useNavigate } from 'react-router'
 import { getToken } from './helpers/auth'
+
 
 const colors = {
   orange: '#FFBA5A',
   grey: '#a9a9a9',
 }
-
-
-
-
-
 
 const FeedbackForm = () => {
   const [hoverValue, setHoverValue] = useState(undefined) // hover value undefined
@@ -26,8 +21,21 @@ const FeedbackForm = () => {
     text: '',
   })
 
-  const { projectId } = useParams()
-
+  const { projectId, reviewId } = useParams()
+  const navigate = useNavigate()
+  /*
+    useEffect(() => {
+      if (reviewId){
+        const getReview = async () => {
+          try {
+            const {data} = await axios.get( )
+          } catch (error) {
+            
+          }
+        }
+      }
+    }, [reviewId])
+  */
 
   const handleChange = event => {
     const updatedReviewField = {
@@ -42,12 +50,21 @@ const FeedbackForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { data } = await axios.post(`/api/projects/${projectId}/review`, formdata, {
-        headers: {
-          Authorization: `Bearer ${getToken()}`, 
-        },
-      })
-      console.log('SUCCESS ->', data._id)
+      if (reviewId) {
+        console.log('inside')
+        const { data } = await axios.put(`/api/projects/${projectId}/reviews/${reviewId}`, formdata, {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, 
+          },
+        })
+      } else {
+        const { data } = await axios.post(`/api/projects/${projectId}/reviews`, formdata, {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, 
+          },
+        })
+      }
+      navigate(`/project/${projectId}`)
     } catch (err) {
       console.log(err.response.data)
     }
@@ -92,15 +109,12 @@ const FeedbackForm = () => {
         <textarea
           placeholder="Give a rating by clicking the stars and leave some feedback"
           className="textarea"
+          name="text"
+          onChange={handleChange}
         />
         <div>
-          <input
-            type="text"
-            name="text"
-            onChange={handleChange}
-            placeholder="Review"
-          />
-          <button className="submit-feedback-button" onClick={handleClick}>
+        
+          <button className="submit-feedback-button" >
             Submit feedback
           </button>
           <button>Delete Feedback</button>

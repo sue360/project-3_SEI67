@@ -369,6 +369,9 @@
  .profile {
   font-family: 'Courier New', Courier, monospace;
   color: $primary;
+  img {
+    max-width: 100%;
+  }
  }
 
  .image-form {

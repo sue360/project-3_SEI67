@@ -23,6 +23,7 @@ const App = () => {
         <HomePageNavbar />
         <Routes>
           <Route path="/projects/:projectId/reviews" element={<FeedbackForm />} />
+          <Route path="/projects/:projectId/reviews/:reviewId/edit" element={<FeedbackForm />} />
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/projects/imageuploadform" element={<ImageUploadForm />} />
